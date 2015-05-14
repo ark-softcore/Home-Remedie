@@ -3,6 +3,16 @@
 
     <string name="app_name">Home Remedies</string>
     <string name="action_settings">Settings</string>
+    <string name="icon">Icon</string>
+    <string name="browse">Browse</string>
+    <string name="favourites">Favourites</string>
+    <string name="cures">Cures</string>
+    <string name="remove_ads">Remove Ads</string>
+    <string name="more_apps">More Apps</string>
+    <string name="title_activity_remedie_description">RemedieDescriptionActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_cure_description_screen">CureDescriptionScreen</string>
+    <string name="added_in_favourite">Added in favourite.</string>
+    <string name="removed_from_favourite">Removed from favourite.</string>
 
 </resources>

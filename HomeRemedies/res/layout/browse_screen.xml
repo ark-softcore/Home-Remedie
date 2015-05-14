@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <com.ark.homeremedies.common.StickyListHeadersListView
+        android:id="@+id/listView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:divider="@android:color/black"
+        android:dividerHeight="3dp" />
+
+    <LinearLayout
+        android:id="@+id/scrollbar_container"
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:gravity="center_vertical|right"
+        android:minWidth="20dp"
+        android:orientation="horizontal" >
+
+        <com.ark.homeremedies.apputils.Sidebar
+            android:id="@+id/sidebar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+    </LinearLayout>
+
+</LinearLayout>
