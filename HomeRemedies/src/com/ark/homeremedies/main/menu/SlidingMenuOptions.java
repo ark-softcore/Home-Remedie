@@ -11,11 +11,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.ark.homeremedies.MainActivity;
 import com.ark.homeremedies.R;
-import com.ark.homeremedies.screens.BrowseScreen;
-import com.ark.homeremedies.screens.CuresScreen;
-import com.ark.homeremedies.screens.FavouriteRemediesScreen;
+import com.ark.homeremedies.main.MainActivity;
+import com.ark.homeremedies.main.page.BrowseScreen;
+import com.ark.homeremedies.main.page.CuresScreen;
+import com.ark.homeremedies.main.page.FavouriteRemediesScreen;
 
 public class SlidingMenuOptions extends BaseFragment implements OnItemClickListener {
 	public static final String TAG = SlidingMenuOptions.class.getName();
@@ -32,7 +32,7 @@ public class SlidingMenuOptions extends BaseFragment implements OnItemClickListe
 		ListView listView = (ListView) findViewById(R.id.option_list_view);
 
 		SlidingMenuOptionAdapter adapter = new SlidingMenuOptionAdapter(getActivity());
-		adapter.add(R.string.browse);
+		adapter.add(R.string.remedies);
 		adapter.add(R.string.favourites);
 		adapter.add(R.string.cures);
 		adapter.add(R.string.remove_ads);
@@ -64,7 +64,7 @@ public class SlidingMenuOptions extends BaseFragment implements OnItemClickListe
 
 		int item = (Integer) parent.getItemAtPosition(position);
 		switch (item) {
-		case R.string.browse:
+		case R.string.remedies:
 			fragment = new BrowseScreen();
 			break;
 

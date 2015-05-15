@@ -1,7 +1,0 @@
-# cache for current jar dependency. DO NOT EDIT.
-# format is <lastModified> <length> <SHA-1> <path>
-# Encoding is UTF-8
-1427209744975 1074044 33b27a8d2a5b87e6eb6c60e87a5374ffbfeacc3a D:\Android\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\libs\android-support-v4.jar
-1427526736195 1074044 33b27a8d2a5b87e6eb6c60e87a5374ffbfeacc3a D:\WorkSpace\AppCommon\libs\android-support-v4.jar
-1427209744877 523661 b69b7abb225c5d1ebf3bab999a276fab7ab8628c D:\Android\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\libs\android-support-v7-appcompat.jar
-1427526736200 523661 b69b7abb225c5d1ebf3bab999a276fab7ab8628c D:\WorkSpace\AppCommon\libs\android-support-v7-appcompat.jar

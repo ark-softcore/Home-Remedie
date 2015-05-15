@@ -6,8 +6,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.ark.homeremedies.MainActivity;
 import com.ark.homeremedies.R;
+import com.ark.homeremedies.main.MainActivity;
 
 public class BgActivity extends BaseActivity {
 	private static boolean close;

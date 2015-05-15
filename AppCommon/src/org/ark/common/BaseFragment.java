@@ -1,9 +1,9 @@
 package org.ark.common;
 
 import android.annotation.TargetApi;
-import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.View;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)

@@ -40,7 +40,7 @@ public class Remedie implements DatabaseInsertable, Parcelable {
 
 	public Remedie(Cursor cursor) {
 		this.remedieId = cursor.getString(cursor.getColumnIndex(Column.REMEDIE_ID.getIdentifier()));
-		this.title = cursor.getString(cursor.getColumnIndex(Column.TITLE.getIdentifier())).replace("\n", "");
+		this.title = cursor.getString(cursor.getColumnIndex(Column.TITLE.getIdentifier()));
 		this.favourite = cursor.getInt(cursor.getColumnIndex(Column.FAVOURITE.getIdentifier())) == 1;
 	}
 
