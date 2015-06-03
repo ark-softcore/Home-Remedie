@@ -32,6 +32,8 @@ public class CureDescriptionScreen extends BaseActivity {
 		
 		ExpandableListView descListView = (ExpandableListView) findViewById(R.id.description_list);
 		descListView.setAdapter(new CureDescriptionAdapter(this, list));
+		
+		descListView.expandGroup(0);
 	}
 
 	@Override

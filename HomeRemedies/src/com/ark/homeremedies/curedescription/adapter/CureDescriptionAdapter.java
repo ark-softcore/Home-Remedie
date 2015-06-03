@@ -40,9 +40,11 @@ public class CureDescriptionAdapter extends BaseExpandableListAdapter {
 	@Override
 	public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		TextView view = (TextView) inflater.inflate(R.layout.title_layout, null);
-		view.setBackgroundColor(Color.YELLOW);
-		view.setText(getChild(groupPosition, childPosition).getDescription());
+		
+		View view = inflater.inflate(R.layout.description_layout, parent, false);
+		TextView tView = (TextView) view.findViewById(R.id.title);
+		tView.setText(getChild(groupPosition, childPosition).getDescription().replace("\n", ""));
+		
 		return view;
 	}
 
@@ -71,7 +73,7 @@ public class CureDescriptionAdapter extends BaseExpandableListAdapter {
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		TextView view = (TextView) inflater.inflate(R.layout.title_layout, null);
+		TextView view = (TextView) inflater.inflate(R.layout.title_layout, parent, false);
 		view.setBackgroundColor(Color.RED);
 		view.setText(getGroup(groupPosition).getCureName());
 		return view;
