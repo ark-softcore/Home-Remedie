@@ -16,6 +16,7 @@ import com.ark.homeremedies.main.MainActivity;
 import com.ark.homeremedies.main.page.BrowseScreen;
 import com.ark.homeremedies.main.page.CuresScreen;
 import com.ark.homeremedies.main.page.FavouriteRemediesScreen;
+import com.ark.homeremedies.playstore.PlayStoreUtils;
 
 public class SlidingMenuOptions extends BaseFragment implements OnItemClickListener {
 	public static final String TAG = SlidingMenuOptions.class.getName();
@@ -35,7 +36,7 @@ public class SlidingMenuOptions extends BaseFragment implements OnItemClickListe
 		adapter.add(R.string.remedies);
 		adapter.add(R.string.favourites);
 		adapter.add(R.string.cures);
-		adapter.add(R.string.remove_ads);
+//		adapter.add(R.string.remove_ads);
 		adapter.add(R.string.more_apps);
 
 		listView.setAdapter(adapter);
@@ -75,9 +76,13 @@ public class SlidingMenuOptions extends BaseFragment implements OnItemClickListe
 		case R.string.favourites:
 			fragment = new FavouriteRemediesScreen();
 			break;
+			
+		case R.string.more_apps:
+			PlayStoreUtils.openVendorOnStore(getActivity());
+			return;
 		}
 
-		transaction.replace(R.id.container, fragment).commitAllowingStateLoss();
+		transaction.replace(R.id.container, fragment, "main_fragment").commitAllowingStateLoss();
 		((MainActivity) getActivity()).setCurrentFragment(fragment);
 
 		((MainActivity) getActivity()).getMenu().toggle(true);

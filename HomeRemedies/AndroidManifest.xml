@@ -8,14 +8,17 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="22" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.ark.homeremedies.main.menu.BgActivity"
-            android:label="@string/app_name" >
+            android:name=".main.menu.BgActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,17 +26,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ark.homeremedies.main.MainActivity"
+            android:name=".main.MainActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Transparent" />
         <activity
-            android:name="com.ark.homeremedies.remediedescription.RemedieDescriptionActivity"
+            android:name=".remediedescription.RemedieDescriptionActivity"
             android:label="@string/title_activity_remedie_description"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
         <activity
-            android:name="com.ark.homeremedies.curedescription.CureDescriptionScreen"
-            android:label="@string/title_activity_cure_description_screen" >
+            android:name=".curedescription.CureDescriptionScreen"
+            android:label="@string/title_activity_cure_description_screen"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.ark.homeremedies.wiki.WebviewActivity"
+            android:label="@string/title_activity_webview"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
         </activity>
     </application>
 

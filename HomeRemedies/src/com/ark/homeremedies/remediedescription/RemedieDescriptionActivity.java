@@ -2,11 +2,14 @@ package com.ark.homeremedies.remediedescription;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Locale;
 
 import org.ark.common.support.BaseActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +24,7 @@ import com.ark.homeremedies.dao.DatabaseHelper;
 import com.ark.homeremedies.dao.model.CuresRemedieReference;
 import com.ark.homeremedies.dao.model.Remedie;
 import com.ark.homeremedies.dao.model.RemedieDescription;
+import com.ark.homeremedies.wiki.WebviewActivity;
 
 public class RemedieDescriptionActivity extends BaseActivity {
 	private Remedie remedie;
@@ -37,8 +41,9 @@ public class RemedieDescriptionActivity extends BaseActivity {
 		remedie = intent.getParcelableExtra(AppUtil.INTENT_EXTRA_DATA);
 		
 		setTitle(remedie.getTitle());
-		getSupportActionBar().setHomeButtonEnabled(true);
-		getSupportActionBar().setDisplayShowHomeEnabled(true);
+		ActionBar actionBar = getSupportActionBar();
+		actionBar.setHomeButtonEnabled(true);
+		actionBar.setDisplayShowHomeEnabled(true);
 
 		TextView tvDesc = (TextView) findViewById(R.id.desc);
 
@@ -62,10 +67,30 @@ public class RemedieDescriptionActivity extends BaseActivity {
 			
 			@Override
 			public void onClick(View v) {
-				
 				Intent intent = new Intent(getActivity(), CureDescriptionScreen.class);
 				intent.putExtra(AppUtil.INTENT_EXTRA_DATA, cure);
 				getActivity().startActivity(intent);
+			}
+		});
+		
+		int color = getResources().getColor(R.color.app_color_primary);
+		actionBar.setBackgroundDrawable(new ColorDrawable(color));
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		
+		findViewById(R.id.wiki).setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				String title = remedie.getTitle().trim();
+				title = title.toLowerCase(Locale.getDefault());
+				title = title.replace(" ", "_");
+				
+				String url = "https://en.wikipedia.org/wiki/" + title;
+				
+				Intent intent = new Intent(getActivity(), WebviewActivity.class);
+				intent.putExtra(WebviewActivity.URL, url);
+				intent.putExtra(WebviewActivity.TITLE, remedie.getTitle());
+				startActivity(intent);
 			}
 		});
 	}
@@ -101,6 +126,10 @@ public class RemedieDescriptionActivity extends BaseActivity {
 			}
 			
 			DatabaseHelper.getInstance(getActivity()).setRemedieAsFavourite(remedie);
+			return true;
+			
+		case android.R.id.home:
+			onBackPressed();
 			return true;
 			
 		default:

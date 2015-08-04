@@ -4,9 +4,14 @@ import org.ark.common.support.BaseActivity;
 import org.ark.common.support.BaseFragment;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Display;
 import android.view.Menu;
 import android.view.View;
@@ -30,7 +35,6 @@ public class MainActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		getSupportActionBar().hide();
 		setContentView(R.layout.activity_main);
-
 	}
 
 	@Override
@@ -114,7 +118,43 @@ public class MainActivity extends BaseActivity {
 				menu.toggle(true);
 			}
 		});
+	}
+	
+	@Override
+	public void onBackPressed() {
+		Fragment fragment = getSupportFragmentManager().findFragmentByTag("main_fragment");
+		
+		if(menu.isMenuShowing()) {
+			menu.toggle();
+			
+			return;
+		}
+		
+		if(!(fragment instanceof BrowseScreen)) {
+			FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
+			BaseFragment cFragment = new BrowseScreen();
+			transaction.replace(R.id.container, cFragment, "main_fragment").commitAllowingStateLoss();
+			setCurrentFragment(cFragment);
+		} else {
+			OnClickListener listener = new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					switch (which) {
+					case DialogInterface.BUTTON_POSITIVE:
+						finish();
+						break;
+					}
+				}
+			};
+			
+			new AlertDialog.Builder(getActivity())
+				.setMessage("Are you reaaly want to exit?")
+				.setPositiveButton("YES", listener)
+				.setNegativeButton("NO", listener)
+				.show();
+		}
 	}
 
 	@Override

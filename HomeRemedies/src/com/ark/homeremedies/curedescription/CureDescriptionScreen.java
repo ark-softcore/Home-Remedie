@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import org.ark.common.support.BaseActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.view.MenuItem;
 import android.widget.ExpandableListView;
 
 import com.ark.homeremedies.R;
@@ -16,7 +19,6 @@ import com.ark.homeremedies.dao.model.Cures;
 import com.ark.homeremedies.dao.model.CuresRemedieReference;
 
 public class CureDescriptionScreen extends BaseActivity {
-
 	private CuresRemedieReference curesRemedieReference;
 
 	@Override
@@ -34,6 +36,26 @@ public class CureDescriptionScreen extends BaseActivity {
 		descListView.setAdapter(new CureDescriptionAdapter(this, list));
 		
 		descListView.expandGroup(0);
+		
+		int color = getResources().getColor(R.color.app_color_primary);
+
+		ActionBar actionBar = getSupportActionBar();
+		actionBar.setBackgroundDrawable(new ColorDrawable(color));
+		actionBar.setHomeButtonEnabled(true);
+		actionBar.setDisplayShowHomeEnabled(true);
+		actionBar.setDisplayHomeAsUpEnabled(true);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			onBackPressed();
+			return true;
+			
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 
 	@Override

@@ -14,5 +14,6 @@
     <string name="title_activity_cure_description_screen">CureDescriptionScreen</string>
     <string name="added_in_favourite">Added in favourite.</string>
     <string name="removed_from_favourite">Removed from favourite.</string>
+    <string name="title_activity_webview">WebviewActivity</string>
 
 </resources>

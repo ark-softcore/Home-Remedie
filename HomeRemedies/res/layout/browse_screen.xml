@@ -2,16 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/margin_normal" >
 
     <com.ark.homeremedies.common.StickyListHeadersListView
         android:id="@+id/listView"
         android:layout_width="0dp"
-        android:layout_marginLeft="@dimen/margin_small"
         android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/margin_small"
         android:layout_weight="1"
-        android:divider="@android:color/black"
-        android:dividerHeight="1dp" />
+        android:divider="@color/divider_color"
+        android:dividerHeight="1dp"
+        android:scrollbars="none" />
 
     <LinearLayout
         android:id="@+id/scrollbar_container"

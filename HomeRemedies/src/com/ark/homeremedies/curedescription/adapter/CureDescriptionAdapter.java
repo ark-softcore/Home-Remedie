@@ -3,7 +3,6 @@ package com.ark.homeremedies.curedescription.adapter;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,9 +49,13 @@ public class CureDescriptionAdapter extends BaseExpandableListAdapter {
 
 	@Override
 	public int getChildrenCount(int groupPosition) {
-		Cures group = getGroup(groupPosition);
-		ArrayList<CureDescription> cureDescriptionsList = DatabaseHelper.getInstance(context).getCureDescriptions(group.getCuresId(), group.getReceipeId());
-		return cureDescriptionsList.size();
+		if(groupPosition < getGroupCount()) {
+			Cures group = getGroup(groupPosition);
+			ArrayList<CureDescription> cureDescriptionsList = DatabaseHelper.getInstance(context).getCureDescriptions(group.getCuresId(), group.getReceipeId());
+			return cureDescriptionsList.size();
+		}
+		
+		return 0;
 	}
 
 	@Override
@@ -74,7 +77,7 @@ public class CureDescriptionAdapter extends BaseExpandableListAdapter {
 	public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		TextView view = (TextView) inflater.inflate(R.layout.title_layout, parent, false);
-		view.setBackgroundColor(Color.RED);
+		view.setBackgroundColor(context.getResources().getColor(R.color.app_color_primary_dark));
 		view.setText(getGroup(groupPosition).getCureName());
 		return view;
 	}
